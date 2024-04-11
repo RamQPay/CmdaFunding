@@ -1,0 +1,242 @@
+﻿@model TransactionProcessing.Models.TransactionViewModel
+@{
+    ViewData["Title"] = "TransactSave Page";
+}
+
+
+                                            @* Without adding "Feedetails"" Text *@
+@* <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>Transaction</title>
+    <style>
+        body {
+            font-family: Arial,sans-serif;
+        }
+
+        div {
+            margin-bottom: 1px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box
+        }
+
+        button {
+            padding: 10px;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+
+            button:hover {
+                background-color: #45a049;
+            }
+    </style>
+</head>
+<body>
+    <form asp-controller="Payment" asp-action="TransactionSave" method="Post">
+        <div class="row">
+            <div class="col-sm-4"></div>
+            <div class="col-sm-4">
+                <div>
+                    <label for="FileNumber">FileNumber:</label>
+                    <input type="text" id="FileNumber" name="FileNumber" />
+                </div>
+                <div>
+                    <label for="ChallanNumber">ChallanNumber:</label>
+                    <input type="text" id="ChallanNumber" name="ChallanNumber" />
+                </div>
+                <div>
+                    <label for="TransactionRefNo">TransactionRefNo:</label>
+                    <input type="text" id="TransactionRefNo" name="TransactionRefNo" />
+                </div>
+                <div>
+                    <label for="Amount">Amount:</label>
+                    <input type="text" id="Amount" name="Amount" />
+                </div>
+                <div>
+                    <label for="CustomerName">CustomerName:</label>
+                    <input type="text" id="CustomerName" name="CustomerName" />
+                </div>
+                <div>
+                    <button type="submit" onclick="addUser()">Add</button>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <script>
+
+
+        function addUser() {
+            var fileNumber = document.getElementById("FileNumber").value;
+            var challanNumber = document.getElementById("ChallanNumber").value;
+            var transactionRefNo = document.getElementById("TransactionRefNo").value;
+            var amount = document.getElementById("Amount").value;
+            var customerName = document.getElementById("CustomerName").value;
+
+
+            var userData = {
+                FileNumber: fileNumber,
+                ChallanNumber: challanNumber,
+                TransactionRefNo: transactionRefNo,
+                Amount: amount,
+                CustomerName: customerName
+            };
+        }
+
+    </script>
+</body>
+</html> *@
+
+
+                                                    @* With adding "Feedetails"" Text *@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>Transaction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        div {
+            margin-bottom: 1px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box
+        }
+
+        button {
+            padding: 10px;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+
+            button:hover {
+                background-color: #45a049;
+            }
+    </style>
+</head>
+
+<body>
+    <form asp-controller="Payment" asp-action="TransactionSave" method="Post">
+        <div class="row">
+            <div class="col-sm-4"></div>
+            <div class="col-sm-4">
+                <div>
+                    <label for="FileNumber">FileNumber:</label>
+                    <input type="text" id="FileNumber" name="FileNumber" />
+                </div>
+                <div>
+                    <label for="ChallanNumber">ChallanNumber:</label>
+                    <input type="text" id="ChallanNumber" name="ChallanNumber" />
+                </div>
+                <div>
+                    <label for="TransactionRefNo">TransactionRefNo:</label>
+                    <input type="text" id="TransactionRefNo" name="TransactionRefNo" />
+                </div>
+                <div>
+                    <label for="Amount">Amount:</label>
+                    <input type="text" id="Amount" name="Amount" />
+                </div>
+                <div>
+                    <label for="CustomerName">CustomerName:</label>
+                    <input type="text" id="CustomerName" name="CustomerName" />
+                </div>
+                <div>
+                    <label for="Feedetails">Feedetails:</label>
+                    @* <textarea id="Feedetails" name="Feedetails" rows="4" cols="50"></textarea> *@
+                    <input type="text" id="Feedetails" name="Feedetails" readonly/>
+                </div>
+                <div>
+                    <button type="button" onclick="addUser()">Add</button>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <!-- Include jQuery library -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script>
+        function addUser() {
+            var fileNumber = document.getElementById("FileNumber").value;
+            var challanNumber = document.getElementById("ChallanNumber").value;
+            var transactionRefNo = document.getElementById("TransactionRefNo").value;
+            var amount = document.getElementById("Amount").value;
+            var customerName = document.getElementById("CustomerName").value;
+
+            var feedetailsJson = [
+                {
+                    "budgetHeader": "Development charges for Building per Sq.m.",
+                    "challanFee": "VGhpcyBpcyBhIHNhbXBsZSBiYXNlNjQgZW5jb2RlZCBjb250ZW50Lg==",
+                    "penalInterest": "VGhpcyBpcyBhIHNhbXBsZSBiYXNlNjQgZW5jb2RlZCBjb250ZW50Lg=="
+                },
+                {
+                    "budgetHeader": "Requlation Charge for land",
+                    "challanFee": "SGVsbG8gV29ybGQhCg==",
+                    "penalInterest": "SGVsbG8gV29ybGQhCg=="
+                },
+                {
+                    "budgetHeader": "Development charges for land Sq.m.",
+                    "challanFee": "SGFpIGJhc2UgNjQgY29udGVudA==",
+                    "penalInterest": "SGFpIGJhc2UgNjQgY29udGVudA=="
+                }
+            ];
+
+            var userData = {
+                FileNumber: fileNumber,
+                ChallanNumber: challanNumber,
+                TransactionRefNo: transactionRefNo,
+                Amount: amount,
+                CustomerName: customerName,
+                Feedetails: feedetailsJson // No need to stringify
+            };
+
+            // Make AJAX POST request
+            $.ajax({
+                type: "POST",
+                url: "/Payment/TransactionSave",
+                data: JSON.stringify(userData),
+                contentType: "application/json",
+                success: function (response) {
+                    // console.log("Transaction saved successfully");
+                    document.body.innerHTML = response;
+                },
+                error: function (xhr, textStatus, errorThrown) {
+                    console.error("Error saving transaction");
+                    // Handle error response
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>
+

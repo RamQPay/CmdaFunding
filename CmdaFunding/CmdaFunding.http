@@ -1,0 +1,6 @@
+# 5063
+@CmdaFunding_HostAddress = http://localhost:3000
+GET {{CmdaFunding_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
